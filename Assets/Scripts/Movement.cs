@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private Rigidbody playerRb;
     public float speed = 1;
-    //public float jumpforce = 10f;
-    //public float gravityModifyer;
-   // private Rigidbody playerRb; 
+    public float jumpForce;
+    public float gravityModifyer;
+
     // Start is called before the first frame update
     void Start()
     {
-        //playerRb = GetComponent<Rigidbody>();
-       //Physics.gravity *= gravityModifyer;
+        playerRb = GetComponent<Rigidbody>();
+        Physics.gravity *= gravityModifyer;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -24,14 +24,15 @@ public class Movement : MonoBehaviour
         Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
         transform.position += moveDirection * speed;
 
+       if(Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        }
     }
 
-    //void FixedUpdate()
-    //{
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-           // playerRb.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
-
-       // }
-    //}
 }
+
+
+
+   
