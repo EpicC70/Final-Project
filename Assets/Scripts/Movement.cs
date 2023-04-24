@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     public float speed = 1;
     public float jumpForce;
     public float gravityModifyer;
+    public bool freeze;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,11 @@ public class Movement : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
+        }
+
+       if(freeze)
+        {
+            playerRb.velocity = Vector3.zero;
         }
     }
 
