@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour
     {
         Camera mycam = GetComponent<Camera>();
 
-        float sensitivity = 0.05f;
+        float sensitivity = 0.005f;
         Vector3 vp = mycam.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mycam.nearClipPlane));
         vp.x -= 0.5f;
         vp.y -= 0.5f;
