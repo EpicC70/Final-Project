@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     public float gravityModifyer;
     public bool freeze;
 
+    //Vector3 moveDirection;
+    //Vector3 mousePosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,9 @@ public class Movement : MonoBehaviour
         {
             playerRb.velocity = Vector3.zero;
         }
+
+        //moveDirection = new Vector3(moveX, moveY, moveZ).normalized;
+        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
 }
