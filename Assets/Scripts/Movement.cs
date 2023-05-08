@@ -9,9 +9,10 @@ public class Movement : MonoBehaviour
     public float jumpForce;
     public float gravityModifyer;
     public bool freeze;
+    public bool isOnGround = true;
 
-    //Vector3 moveDirection;
-    //Vector3 mousePosition;
+    Vector2 moveDirection;
+    Vector2 mousePosition;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +29,10 @@ public class Movement : MonoBehaviour
         Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
         transform.position += moveDirection * speed *Time.deltaTime;
 
-       if(Input.GetKeyDown(KeyCode.Space))
+       if(Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
 
         }
 
@@ -39,8 +41,13 @@ public class Movement : MonoBehaviour
             playerRb.velocity = Vector3.zero;
         }
 
-        //moveDirection = new Vector3(moveX, moveY, moveZ).normalized;
-        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+    }
+
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        isOnGround = true;
     }
 
 }
